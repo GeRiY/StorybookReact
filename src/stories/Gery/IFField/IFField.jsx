@@ -14,7 +14,23 @@ export const IFField = ({name, value, label, ...props}) => {
 
     return (
         <div className={'field'}>
-            <label className={'mb-1'} style={{fontWeight: 'bold'}}>{label}:</label>
+            <div className={'flex-row'}>
+                <span className={'flex-row justify-content-center'}
+                      style={{
+                          color: 'white',background: '#2f9df8', padding: '3px',
+                          fontFamily: 'Titillium Web, sans-serif',
+                }}
+                >
+                    TA
+                </span>&nbsp;
+                <label className={'flex-row justify-content-start'}
+                       style={{
+                           fontFamily: 'Titillium Web, sans-serif',
+                       }}
+                >
+                    {label}:
+                </label>
+            </div>
             <input
                 className={'pa-1 input-element'}
                 style={{ border: '1px solid lightgrey', width: props.width }}

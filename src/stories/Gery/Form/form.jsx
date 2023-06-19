@@ -1,30 +1,44 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import './form.css';
+import {IFField} from "../IFField/IFField.jsx";
+import {FormLayout} from "../FormLayout/formLayout.jsx";
 
 export const Form = ({...props}) => {
     const [formData, setFormData] = React.useState(props.formData);
 
     const handleChange = (field) => {
-        setFormData({
+        const data = {
             ...formData,
             [field.name]: field.value
-        });
-        if (props.onChange) {
-            props.onChange(formData);
         }
+        setFormData(data);
+        if (props.onChange) {
+            props.onChange(data);
+        }
+    }
+
+    if (props.isTest) {
+        props.children = (
+            <FormLayout classes={'gap-1'}>
+                <IFField name={'name'} label={'Név'} />
+                <IFField name={'age'} label={'Kor'} />
+                <IFField name={'gender'} label={'Neme'}/>
+            </FormLayout>
+        );
     }
 
     return (
         <div className={'form'}>
             {props.children &&
                 React.Children.map(props.children, (child) => {
-                    const modifiedChild = React.cloneElement(child, {
-                        onChange: (e) => {
-                            handleChange(e);
-                        },
-                        formData: formData
-                    });
+                    let modifiedChild = child;
+                    if (child.type.name === 'FormLayout') {
+                         modifiedChild = React.cloneElement(child, {
+                            onChange: handleChange,
+                            formData: formData
+                         });
+                    }
                     return modifiedChild;
                 })}
         </div>
@@ -34,6 +48,7 @@ export const Form = ({...props}) => {
 Form.propTypes = {
     formData: PropTypes.object,
     children: PropTypes.node,
+    isTest: PropTypes.bool,
     onChange: PropTypes.func
 };
 
@@ -43,7 +58,6 @@ Form.defaultProps = {
         age: '18',
         gender: 'Male'
     },
-    onChange: (data) => {
-        console.log(data);
-    }
+    isTest: false,
+    onChange: (data) => console.log(data)
 };

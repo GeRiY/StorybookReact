@@ -1,21 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './page.css';
 import { Form } from './../Form/form.jsx';
-import {Flex} from "../Flex/flex.jsx";
-import {InputField} from "../InputField/inputField.jsx";
+import {FormLayout} from "../FormLayout/formLayout.jsx";
+import {IFField} from "../IFField/IFField.jsx";
 
 export const Page = ({ ...props }) => {
   return (
     <div className={'page'}>
         <Form onChange={(data) => console.log(data)}>
-            <Flex classes={'gap-1 pa-2'}>
-                <Flex classes={'gap-1'}>
-                    <InputField name={'name'} label={'Név'} />
-                    <InputField name={'age'} label={'Kor'} />
-                    <InputField name={'gender'} label={'Neme'}/>
-                </Flex>
-            </Flex>
+            <FormLayout classes={'gap-1 pa-2'}>
+                <FormLayout classes={'gap-1'}>
+                    <IFField name={'name'} label={'Név'} />
+                    <IFField name={'age'} label={'Kor'} />
+                    <IFField name={'gender'} label={'Neme'}/>
+                </FormLayout>
+            </FormLayout>
         </Form>
     </div>
   );

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './inputField.css';
-import './../Flex/flex.css';
-import './../Flex/margin.css';
-import './../Flex/padding.css';
+import './IFField.css';
+import '../FormLayout/formLayout.css';
+import '../FormLayout/margin.css';
+import '../FormLayout/padding.css';
 
-export const InputField = ({name, value, label, ...props}) => {
+export const IFField = ({name, value, label, ...props}) => {
     const handleChange = (e) => {
         if (props.onChange) {
             props.onChange({ name, value: e.target.value });
@@ -27,7 +27,7 @@ export const InputField = ({name, value, label, ...props}) => {
     );
 };
 
-InputField.propTypes = {
+IFField.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
     label: PropTypes.string,
@@ -35,7 +35,7 @@ InputField.propTypes = {
     onChange: PropTypes.func
 };
 
-InputField.defaultProps = {
+IFField.defaultProps = {
     name: '',
     value: '',
     label: '',

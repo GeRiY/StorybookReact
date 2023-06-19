@@ -1,11 +1,14 @@
+
+// @ts-ignore
 import React from 'react';
+// @ts-ignore
 import PropTypes from 'prop-types';
 import './IFField.css';
 import '../FormLayout/formLayout.css';
 import '../FormLayout/margin.css';
 import '../FormLayout/padding.css';
 
-export const IFField = ({name, value, label, ...props}) => {
+export const IFField = ({name, value, label, ...props}: IFFieldProps) => {
     const handleChange = (e) => {
         if (props.onChange) {
             props.onChange({ name, value: e.target.value });
@@ -43,20 +46,10 @@ export const IFField = ({name, value, label, ...props}) => {
     );
 };
 
-IFField.propTypes = {
-    name: PropTypes.string,
-    value: PropTypes.string,
-    label: PropTypes.string,
-    width: PropTypes.string,
-    onChange: PropTypes.func
-};
-
-IFField.defaultProps = {
-    name: '',
-    value: '',
-    label: '',
-    width: '100px',
-    onChange: (data) => {
-        console.log('inputField component',data);
-    }
-};
+interface IFFieldProps {
+    name?: string;
+    value?: string;
+    label?: string;
+    width?: string;
+    onChange?: Function;
+}

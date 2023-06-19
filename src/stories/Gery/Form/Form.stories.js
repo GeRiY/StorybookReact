@@ -1,4 +1,4 @@
-import { Form } from './form.jsx';
+import { Form } from './form.tsx';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
@@ -8,7 +8,7 @@ export default {
   argTypes: {
     isTest: { control: 'boolean' },
     formData: { control: 'object' },
-    onChange: { action: 'function' },
+    onChange: { action: 'function' }
   },
 };
 

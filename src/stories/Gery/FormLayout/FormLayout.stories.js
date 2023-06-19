@@ -1,5 +1,4 @@
-import { FormLayout } from './formLayout.jsx';
-import {IFField} from "../IFField/IFField.jsx";
+import { FormLayout } from './formLayout.tsx';
 import React from "react";
 
 
@@ -27,7 +26,7 @@ export const DEFAULT = {
     },
     classes: 'flex-row flex-wrap gap-1 pa-2',
     borderColor: 'lightgrey',
-    width: '21%',
+    width: '41%',
     isTest: true,
   }
 };

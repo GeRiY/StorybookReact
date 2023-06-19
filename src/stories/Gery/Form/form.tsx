@@ -1,10 +1,12 @@
-import React, {useEffect} from 'react';
-import PropTypes from 'prop-types';
+// @ts-ignore
+import React from 'react';
 import './form.css';
-import {IFField} from "../IFField/IFField.jsx";
-import {FormLayout} from "../FormLayout/formLayout.jsx";
+// @ts-ignore
+import {IFField} from "../IFField/IFField.tsx";
+// @ts-ignore
+import {FormLayout} from "../FormLayout/formLayout.tsx";
 
-export const Form = ({...props}) => {
+export const Form = ({...props}:FormTypes) => {
     const [formData, setFormData] = React.useState(props.formData);
 
     const handleChange = (field) => {
@@ -45,19 +47,9 @@ export const Form = ({...props}) => {
     );
 };
 
-Form.propTypes = {
-    formData: PropTypes.object,
-    children: PropTypes.node,
-    isTest: PropTypes.bool,
-    onChange: PropTypes.func
-};
-
-Form.defaultProps = {
-    formData: {
-        name: 'John Doe',
-        age: '18',
-        gender: 'Male'
-    },
-    isTest: false,
-    onChange: (data) => console.log(data)
-};
+interface FormTypes {
+    formData: object,
+    children: any,
+    isTest?: boolean,
+    onChange: Function
+}

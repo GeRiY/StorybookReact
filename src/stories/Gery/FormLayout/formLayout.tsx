@@ -1,12 +1,13 @@
+// @ts-ignore
 import React from 'react';
-import PropTypes from 'prop-types';
 import './formLayout.css';
 import './margin.css';
 import './padding.css';
-import {IFField} from "../IFField/IFField.jsx";
+// @ts-ignore
+import {IFField} from "../IFField/IFField.tsx";
 
-export const FormLayout = ({ ...props }) => {
-    const style = {}
+export const FormLayout = ({ ...props }: FormLayoutTypes) => {
+    const style: StyleTypes = {}
     if (props.borderColor) {
         style.border = `1px solid ${props.borderColor}`;
     }
@@ -17,6 +18,7 @@ export const FormLayout = ({ ...props }) => {
 
     if (props.isTest) {
         props.children = (
+            // @ts-ignore
             <FormLayout classes={props.classes}>
                 <IFField name={'name'} label={'Név'} />
                 <IFField name={'age'} label={'Kor'} />
@@ -58,19 +60,18 @@ export const FormLayout = ({ ...props }) => {
     );
 };
 
-FormLayout.propTypes = {
-    classes: PropTypes.string,
-    formData: PropTypes.object,
-    children: PropTypes.node,
-    borderColor: PropTypes.string,
-    onChange: PropTypes.func,
-    width: PropTypes.string,
-    isTest: PropTypes.bool
-};
+interface StyleTypes {
+    borderColor?: string;
+    border?: string;
+    width?: string;
+}
 
-FormLayout.defaultProps = {
-    classes: '',
-    formData: {},
-    isTest: false,
-    onChange: (data) => console.log('from Flex component',data)
-};
+interface FormLayoutTypes {
+    classes?: string,
+    formData?: object,
+    children?: any,
+    borderColor?: string,
+    onChange?: Function,
+    width?: string,
+    isTest?: boolean
+}

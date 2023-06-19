@@ -1,5 +1,5 @@
 // @ts-ignore
-import React from 'react';
+import React, {useState} from 'react';
 import './page.css';
 // @ts-ignore
 import { Form } from '../Form/form.tsx';
@@ -9,9 +9,11 @@ import {FormLayout} from "../FormLayout/formLayout.tsx";
 import {IFField} from "../IFField/IFField.tsx";
 
 export const Page = ({ ...props }: PagePropsType) => {
+  const [formDataState, setFormDataState] = useState(props.formData);
+
   return (
     <div className={'page'}>
-        <Form onChange={(data) => console.log(data)} formData={props.formData}>
+        <Form onChange={(data) => setFormDataState(data)} formData={formDataState}>
             <FormLayout classes={props.firstLayoutClasses} width={"100%"}>
                 <FormLayout classes={props.secondLayoutClasses} width={"100%"}>
                     <IFField name={'name'} label={'Név'} />
@@ -20,6 +22,9 @@ export const Page = ({ ...props }: PagePropsType) => {
                 </FormLayout>
             </FormLayout>
         </Form>
+        <div style={{paddingLeft: '30px'}}>
+            {JSON.stringify(formDataState, null, 2)}
+        </div>
     </div>
   );
 };

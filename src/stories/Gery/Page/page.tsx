@@ -13,6 +13,7 @@ export const Page = ({ ...props }: PagePropsType) => {
 
   return (
     <div className={'page'}>
+
         <Form onChange={(data) => setFormDataState(data)} formData={formDataState}>
             <FormLayout classes={props.firstLayoutClasses} width={"100%"}>
                 <FormLayout classes={props.secondLayoutClasses} width={"100%"}>

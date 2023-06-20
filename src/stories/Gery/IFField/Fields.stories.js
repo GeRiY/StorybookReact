@@ -2,7 +2,7 @@ import { IFField } from './IFField.tsx';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
-  title: 'Gery/IF-Field',
+  title: 'Gery/Fields',
   component: IFField,
   tags: ['autodocs'],
   argTypes: {
@@ -15,7 +15,7 @@ export default {
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const DEFAULT = {
+export const Text_Input = {
   args: {
     name: 'name',
     value: 'Gergő',

@@ -25,3 +25,33 @@
 		}
 	}
 }
+.btn {
+	display: flex;
+	justify-content: center;
+	padding: 10px 25px;
+	font-weight: 700;
+	border-radius: 4px;
+	margin: 0 auto;
+}
+
+.btn-primary {
+	background-color: #2f9df8;
+	color: #fff;
+
+	&:hover {
+		cursor: pointer;
+		filter: brightness(90%);
+	}
+
+	&.inverse {
+		border: 1px solid #2f9df8;
+		color: #2f9df8;
+		background-color: #fff;
+
+		&:hover {
+			cursor: pointer;
+			color: #fff;
+			background-color: #2f9df8;
+		}
+	}
+}

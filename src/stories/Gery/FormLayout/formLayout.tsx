@@ -1,10 +1,10 @@
 // @ts-ignore
 import React from 'react';
-import './formLayout.css';
-import './margin.css';
-import './padding.css';
-// @ts-ignore
-import {IFField} from "../IFField/IFField.tsx";
+import './formLayout.scss';
+import './margin.scss';
+import './padding.scss';
+import {IFField} from "../IFField/IFField";
+import {FormLayoutTypes, StyleTypes} from "./interface";
 
 export const FormLayout = ({ ...props }: FormLayoutTypes) => {
     const style: StyleTypes = {}
@@ -14,17 +14,6 @@ export const FormLayout = ({ ...props }: FormLayoutTypes) => {
 
     if (props.width) {
         style.width = props.width;
-    }
-
-    if (props.isTest) {
-        props.children = (
-            // @ts-ignore
-            <FormLayout classes={props.classes}>
-                <IFField name={'name'} label={'Név'} />
-                <IFField name={'age'} label={'Kor'} />
-                <IFField name={'gender'} label={'Neme'}/>
-            </FormLayout>
-        );
     }
 
     return (
@@ -59,19 +48,3 @@ export const FormLayout = ({ ...props }: FormLayoutTypes) => {
         </div>
     );
 };
-
-interface StyleTypes {
-    borderColor?: string;
-    border?: string;
-    width?: string;
-}
-
-interface FormLayoutTypes {
-    classes?: string,
-    formData?: object,
-    children?: any,
-    borderColor?: string,
-    onChange?: Function,
-    width?: string,
-    isTest?: boolean
-}

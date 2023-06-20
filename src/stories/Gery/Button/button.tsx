@@ -4,7 +4,7 @@ import { ButtonProps } from "./interface";
 export interface ButtonStyle {
 	width?: number | string;
 }
-export default function Button(props: ButtonProps) {
+export const Button = function Button(props: ButtonProps) {
 	function onButtonClick() {
 		if (props.onClick) props.onClick();
 	}

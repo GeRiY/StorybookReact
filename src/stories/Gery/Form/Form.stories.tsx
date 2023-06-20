@@ -5,8 +5,8 @@ import {Form} from './form';
 import {FormTypes} from "./interface";
 import {IFField} from "../IFField/IFField";
 import {FormLayout} from "../FormLayout/formLayout";
+import Template from "../template";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
   title: 'Gery/Form',
   component: Form,
@@ -16,16 +16,17 @@ export default {
   },
 };
 
-const Template = (args: FormTypes) => <div style={{padding: '10px'}}>
-  <Form {...args}>
+const Main = (args) => <Form {...args}>{args.children}</Form>;
+
+const DefaultTemplate = (args) => <Template>
+  <Main {...args}>
     <FormLayout classes={'gap-1'}>
       <IFField name={'name'} label={'Név'}/>
       <IFField name={'age'} label={'Kor'}/>
       <IFField name={'gender'} label={'Neme'}/>
     </FormLayout>
-  </Form>
-</div>;
-
+  </Main>
+</Template>;
 
 const DefaultArgs: FormTypes = {
   formData: {
@@ -40,5 +41,5 @@ const DefaultArgs: FormTypes = {
 }
 export const Default = {
   args: DefaultArgs,
-  render: (args) => Template(args),
+  render: (args: FormTypes) => DefaultTemplate(args),
 };

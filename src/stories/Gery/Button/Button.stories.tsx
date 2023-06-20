@@ -2,8 +2,8 @@
 import React from "react";
 import {action} from "@storybook/addon-actions";
 import {ButtonProps} from "./interface.js";
-import Button from "./button";
-
+import {Button} from "./button";
+import Template from "../template";
 export default {
   title: 'Gery/Button',
   component: Button,
@@ -21,10 +21,11 @@ export default {
   },
 };
 
-const Template = (args: ButtonProps) => <div style={{padding: '10px'}}>
-  <Button {...args}>{args.children}</Button>
-</div>;
+const Main = (args) => <Button {...args}>{args.children}</Button>;
 
+const DefaultTemplate = (args) => <Template>
+  <Main {...args}>{args.children}</Main>
+</Template>;
 export const Default = {
   args: {
     children: 'Button',
@@ -33,5 +34,5 @@ export const Default = {
     inverse: true,
     onClick: action('onClick'),
   },
-  render: (args) => Template(args),
+  render: (args: ButtonProps) => DefaultTemplate(args),
 };
